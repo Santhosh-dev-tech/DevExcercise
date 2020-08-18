@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="RecordOwnerDetailsCtrl" >
+	
+    <aura:attribute name="userDataAvailable" type="boolean" default="false"/>
+   	<aura:attribute name="ownerDetails" type="Object"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+  <aura:if isTrue="{!v.userDataAvailable}">
+  
+      <lightning:card
+            variant="narrow"
+           >
+      <div style="padding:1%">
+          <h1 slot="title">{!v.ownerDetails.Name}</h1>
+           <img src="{!v.ownerDetails.MediumPhotoUrl}"/>
+      </div>
+       
+    </lightning:card>
+</aura:if>
+ </aura:component>
